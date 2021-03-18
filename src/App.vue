@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <Carcas msg="Welcome to Your Vue.js App"/>
+    <Carcas :main-razdel="mainRazdel" msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
@@ -12,6 +12,15 @@ export default {
   name: 'App',
   components: {
     Carcas
+  },
+  computed: {
+    mainRazdel () {
+      return this.$store.getters.mainRazdel
+    }
+  },
+  created () {
+    this.$store.dispatch('setMainRazdel')
+    this.$store.dispatch('setMainMenu')
   }
 }
 </script>
