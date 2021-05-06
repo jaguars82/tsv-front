@@ -21,7 +21,8 @@ export default {
     setMainMenu ({ commit }) {
       axios({
         method: 'get',
-        url: "http://test.teacher-info.net/vserver/server.php?queryMode=develop&table=razdeli&fields=id, name, real_name, access, default_content, navigation_mode, allow_mode_change&condition=`parent` = 'root' AND `hidden` = '0'&order=order",
+        // url: "http://test.teacher-info.net/vserver/server.php?queryMode=develop&table=razdeli&fields=id, name, real_name, access, default_content, navigation_mode, allow_mode_change&condition=`parent` = 'root' AND `hidden` = '0'&order=order",
+        url: "http://test.teacher-info.net/vserver/server.php?queryMode=develop&query_name=get_razdels",
         /*
         method: 'post',
         url: '/vserver/server.php',
@@ -43,7 +44,8 @@ export default {
     setMainRazdel ({ commit }) {
       axios({
         method: 'get',
-        url: "http://test.teacher-info.net/vserver/server.php?queryMode=develop&singleRow=1&table=razdeli&fields=name&condition=`parent` = 'root' AND `order` <> '0' AND `hidden` <> '1'&order=order&limit=1"
+        // url: "http://test.teacher-info.net/vserver/server.php?queryMode=develop&singleRow=1&table=razdeli&fields=name&condition=`parent` = 'root' AND `order` <> '0' AND `hidden` <> '1'&order=order&limit=1"
+        url: "http://test.teacher-info.net/vserver/server.php?queryMode=develop&query_name=main_razdel"
       })
       .then(function(response){
         commit('SET_MAIN_RAZDEL', response.data.name)
@@ -56,11 +58,12 @@ export default {
     setCurrentSubrazdels ({ commit }, payload) {
       axios({
         method: 'get',
-        url: "http://test.teacher-info.net/vserver/server.php?queryMode=develop&table=razdeli&fields=id, parent, name, real_name, type, access&condition=`parent` = '"+payload+"' AND `hidden` = '0'&order=order"
+        // url: "http://test.teacher-info.net/vserver/server.php?queryMode=develop&table=razdeli&fields=id, parent, name, real_name, type, access&condition=`parent` = '"+payload+"' AND `hidden` = '0'&order=order"
+        url: "http://test.teacher-info.net/vserver/server.php?queryMode=develop&query_name=get_subrazdels&params="+payload
       })
       .then(function(response){
         commit('SET_CURRENT_SUBRAZDELS', response.data)
-        console.log(response)
+        // console.log(response)
       })
       .catch()
     }

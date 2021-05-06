@@ -2,34 +2,34 @@
   <div>
     <p><span>{{ identificator }}</span> <span>{{ type }}</span> <span>{{ realName }}</span></p>
 
-    <anketa v-if="type === 'anketa'"></anketa>
-    <calendar v-if="type === 'calendar'"></calendar>
-    <dashboard v-if="type === 'dashboard'"></dashboard>
-    <fonoteka v-if="type === 'fonoteka'"></fonoteka>
-    <forums v-if="type === 'forums'"></forums>
-    <fotogallery v-if="type === 'fotogallery'"></fotogallery>
-    <gramota v-if="type === 'gramota'"></gramota>
-    <guest-book v-if="type === 'guestbook'"></guest-book>
-    <greeting v-if="type === 'greeting'"></greeting>
-    <lenta v-if="type === 'lenta'"></lenta>
-    <message-to-admin v-if="type === 'messagetoadmin'"></message-to-admin>
-    <news v-if="type === 'news'"></news>
-    <page v-if="type === 'common_content'"></page>
-    <pics-presentation v-if="type === 'pics_presentation'"></pics-presentation>
-    <site-map v-if="type === 'sitemap'"></site-map>
-    <slider v-if="type === 'slider'"></slider>
-    <spoilers v-if="type === 'spoilers'"></spoilers>
-    <tech-card v-if="type === 'techcard'"></tech-card>
-    <tests v-if="type === 'tests'"></tests>
-    <timetable v-if="type === 'timetable'"></timetable>
-    <contests v-if="type === 'contests'"></contests>
-    <education v-if="type === 'education'"></education>
-    <events v-if="type === 'events'"></events>
-    <greetings v-if="type === 'greetings'"></greetings>
-    <publications v-if="type === 'publications'"></publications>
-    <qualification v-if="type === 'qualification'"></qualification>
-    <student-achievments v-if="type === 'p_achievments'"></student-achievments>
-    <visitka v-if="type === 'visitka'"></visitka>
+    <anketa :id="identificator" v-if="type === 'anketa'"></anketa>
+    <calendar :id="identificator" v-if="type === 'calendar'"></calendar>
+    <dashboard :id="identificator" v-if="type === 'dashboard'"></dashboard>
+    <fonoteka :id="identificator" v-if="type === 'fonoteka'"></fonoteka>
+    <forums :id="identificator" v-if="type === 'forums'"></forums>
+    <fotogallery :id="identificator" v-if="type === 'fotogallery'"></fotogallery>
+    <gramota :id="identificator" v-if="type === 'gramota'"></gramota>
+    <guest-book :id="identificator" v-if="type === 'guestbook'"></guest-book>
+    <greeting :id="identificator" v-if="type === 'greeting'"></greeting>
+    <lenta :id="identificator" v-if="type === 'lenta'"></lenta>
+    <message-to-admin :id="identificator" v-if="type === 'messagetoadmin'"></message-to-admin>
+    <news :id="identificator" v-if="type === 'news'"></news>
+    <page :id="identificator" v-if="type === 'common_content'"></page>
+    <pics-presentation :id="identificator" v-if="type === 'pics_presentation'"></pics-presentation>
+    <site-map :id="identificator" v-if="type === 'sitemap'"></site-map>
+    <slider :id="identificator" v-if="type === 'slider'"></slider>
+    <spoilers :id="identificator" v-if="type === 'spoilers'"></spoilers>
+    <tech-card :id="identificator" v-if="type === 'techcard'"></tech-card>
+    <tests :id="identificator" v-if="type === 'tests'"></tests>
+    <timetable :id="identificator" v-if="type === 'timetable'"></timetable>
+    <contests :id="identificator" v-if="type === 'contests'"></contests>
+    <education :id="identificator" v-if="type === 'education'"></education>
+    <events :id="identificator" v-if="type === 'events'"></events>
+    <greetings :id="identificator" v-if="type === 'greetings'"></greetings>
+    <publications :id="identificator" v-if="type === 'publications'"></publications>
+    <qualification :id="identificator" v-if="type === 'qualification'"></qualification>
+    <student-achievments :id="identificator" v-if="type === 'p_achievments'"></student-achievments>
+    <visitka :id="identificator" v-if="type === 'visitka'"></visitka>
 
   </div>
 </template>

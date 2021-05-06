@@ -19,9 +19,14 @@ import SubrazdelWrapper from './SubrazdelWrapper.vue'
     },*/
     computed: {
       currentSubrazdels () {
-        return this.$store.getters.currentSubrazdels.filter(function(subrazdel) {
-          return subrazdel.type !== 'category'
-        })
+        const subrazdels = this.$store.getters.currentSubrazdels
+        if (subrazdels) {
+          return subrazdels.filter(function(subrazdel) {
+            return subrazdel.type !== 'category'
+          })
+        } else {
+          return null
+        }
       }
     },
     created () {
