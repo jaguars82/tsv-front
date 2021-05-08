@@ -1,5 +1,6 @@
 <template>
   <div>
+    <site-header></site-header>
     {{ mainRazdel }}
     <main-menu></main-menu>
     <router-view name="common"></router-view>
@@ -10,11 +11,13 @@
 
 <script>
 
+import SiteHeader from './Header'
 import MainMenu from './MainMenu'
 
 export default {
   name: 'Carcas',
   components: {
+    SiteHeader,
     MainMenu
   },
   props: [

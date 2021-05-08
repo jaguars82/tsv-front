@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <Carcas :main-razdel="mainRazdel" msg="Welcome to Your Vue.js App"/>
+    <Carcas :main-razdel="mainRazdel"/>
   </div>
 </template>
 
