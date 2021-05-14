@@ -27,9 +27,12 @@ export default {
     return {
     }
   }/*,
-  beforeCreate () {
-    this.$store.dispatch('setMainRazdel')
-    this.$store.dispatch('setMainMenu')
+  head: {
+    script () {
+      return [
+        { type: 'text/javascript', src: this.$store.getters.repository + '/scripts/jssor.slider/jssor.slider.min.js' }
+      ] 
+    }
   }*/
 }
 </script>
