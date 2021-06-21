@@ -1,6 +1,6 @@
 export default {
   state: {
-    repository: 'https://www.teacher-site.ru/services/repository',
+    repository: 'https://www.teacher-site.ru/services/repository/',
   },
   mutations: {
   },
