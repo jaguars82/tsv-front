@@ -51,7 +51,16 @@ export default {
       return state.headerSDuration
     },
     headerSTransitions (state) {
-      return state.headerSTransitions
+      /* converting array of strings to the array of objects */
+      let result = state.headerSTransitions.map(function(str){
+        const obj = {}
+        if(str&&typeof str ==='string'){
+            const objStr = str.match(/\{(.)+\}/g)
+            eval("obj ="+objStr)
+        }
+        return obj
+      })
+      return result
     },
     avatarMode (state) {
       return state.avatarMode
@@ -80,7 +89,16 @@ export default {
       return state.avatarSDuration
     },
     avatarSTransitions (state) {
-      return state.avatarSTransitions
+      /* converting array of strings to the array of objects */
+      let result = state.avatarSTransitions.map(function(str){
+        const obj = {}
+        if(str&&typeof str ==='string'){
+            const objStr = str.match(/\{(.)+\}/g)
+            eval("obj ="+objStr)
+        }
+        return obj
+      })
+      return result
     }
   }
 }

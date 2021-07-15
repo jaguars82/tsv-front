@@ -21,7 +21,6 @@
         <div
           id="hdr_slides"
           data-u="slides"
-          class="headerheight"
           style="position: absolute; overflow: hidden !important; left: 0px; top: 0px; height: 300px; width: 1200px;"
         >
         
@@ -74,7 +73,7 @@
             id="avatar_box1"
             style="overflow: hidden !important; height: 260px; width: 260px;"
           >
-              <div class="headerfoto" u="slides" style="overflow: hidden; left: 0px; top: 0px; width: 260px; height: 260px; box-shadow: 0 0 2px rgba(0,0,0,.5);">
+              <div u="slides" style="overflow: hidden; left: 0px; top: 0px; width: 260px; height: 260px; box-shadow: 0 0 2px rgba(0,0,0,.5);">
 
                 <div v-for="(avaSlide, index) in avatarSlides" :key="index">
 
@@ -192,11 +191,26 @@ export default {
     headerSlides () {
       return this.$store.getters.headerSlides
     },
-    headerSDuration () {
-      return this.$store.getters.headerSDuration
-    },
-    headerSTransitions () {
-      return this.$store.getters.headerSTransitions
+    headerSliderOptions () {
+      return { 
+        $AutoPlay: true, 
+        $DragOrientation: 0, 
+        $PauseOnHover: 0,
+        $SlideHeight: 300,
+        $AutoPlayInterval: Number(this.$store.getters.headerSDuration),
+        $CaptionSliderOptions: {
+          $Class: $JssorCaptionSlideo$,
+          $Transitions: [
+            [{b:0,d:600,x:1200}],
+            [{b:-1,d:1,o:-1},{b:0,d:600,o:1,e:{o:5}}]
+          ]
+        },
+        $SlideshowOptions: {
+          $Class: $JssorSlideshowRunner$,
+          $Transitions: this.$store.getters.headerSTransitions,
+          $TransitionsOrder: 1
+        }
+      }
     },
     avatarMode () {
       return this.$store.getters.avatarMode
@@ -213,11 +227,25 @@ export default {
     avatarSlides () {
       return this.$store.getters.avatarSlides
     },
-    avatarSDuration () {
-      return this.$store.getters.avatarSDuration
-    },
-    avatarSTransitions () {
-      return this.$store.getters.avatarSTransitions
+    avatarSliderOptions () {
+      return { 
+        $AutoPlay: true, 
+        $DragOrientation: 0, 
+        $PauseOnHover: 0,
+        $AutoPlayInterval: Number(this.$store.getters.avatarSDuration),
+        $CaptionSliderOptions: {
+          $Class: $JssorCaptionSlideo$,
+          $Transitions: [
+            [{b:0,d:600,y:100}],
+            [{b:-1,d:1,o:-1},{b:0,d:600,o:1,e:{o:5}}]
+          ]
+        },
+        $SlideshowOptions: {
+          $Class: $JssorSlideshowRunner$,
+          $Transitions: this.$store.getters.avatarSTransitions,
+          $TransitionsOrder: 1
+        }
+      }
     }
   },
   watch: {
@@ -297,115 +325,22 @@ export default {
 
         if (this.backgroundMode === '2') {
 
-          /* converting array of strings to the array of objects */
-          let transitions = this.headerSTransitions.map(function(str){
-            const obj = {}
-            if(str&&typeof str ==='string'){
-                const objStr = str.match(/\{(.)+\}/g)
-                eval("obj ="+objStr)
-            }
-            return obj
-          })
-          
-          const _SlideshowTransitions = transitions
-          const _CaptionTransitions = [
-            [{b:0,d:600,x:1200}],
-            [{b:-1,d:1,o:-1},{b:0,d:600,o:1,e:{o:5}}]
-          ]
-          const options = { 
-            $AutoPlay: true, 
-            $DragOrientation: 0, 
-            $PauseOnHover: 0,
-            // $SlideHeight: headerStartHeight,
-            $SlideHeight: 300,
-            $AutoPlayInterval: Number(this.headerSDuration),
-            $CaptionSliderOptions: {
-              $Class: $JssorCaptionSlideo$,
-              $Transitions: _CaptionTransitions
-            },
-            $SlideshowOptions: {
-              $Class: $JssorSlideshowRunner$,
-              $Transitions: _SlideshowTransitions, // [Required] An array of slideshow transitions to play slideshow 
-              $TransitionsOrder: 1
-            }
-          }
-
-          //let jssor_slider1
-          //setTimeout( function() { jssor_slider1 =  new $JssorSlider$('header_conteiner', options) }, 5)
-
-          // responsive code begin
-          initSlider('header_conteiner', options)
+          initSlider('header_conteiner', this.headerSliderOptions)
           .then((result) => {
             ScaleSlider(result, 'header_conteiner') // scale slider on document load
             $(window).on("resize orientationchange", { slider: result, sliderConteinerID: 'header_conteiner' }, ScaleSlider ) // scale slider on window size change
           })
-          // responsive code end
         }
 
         if (this.avatarMode === '2') {
 
-          /* converting array of strings to the array of objects */
-          let transitions = this.avatarSTransitions.map(function(str){
-            const obj = {}
-            if(str&&typeof str ==='string'){
-                const objStr = str.match(/\{(.)+\}/g)
-                eval("obj ="+objStr)
-            }
-            return obj
-          })
-          
-          const _SlideshowTransitions = transitions
-          const _CaptionTransitions = [
-            [{b:0,d:600,y:100}],
-            [{b:-1,d:1,o:-1},{b:0,d:600,o:1,e:{o:5}}]
-          ]
-          const options_ava = { 
-            $AutoPlay: true, 
-            $DragOrientation: 0, 
-            $PauseOnHover: 0,
-            // $SlideHeight: 300,
-            $AutoPlayInterval: Number(this.avatarSDuration),
-            $CaptionSliderOptions: {
-              $Class: $JssorCaptionSlideo$,
-              $Transitions: _CaptionTransitions
-            },
-            $SlideshowOptions: {
-              $Class: $JssorSlideshowRunner$,
-              $Transitions: _SlideshowTransitions, // [Required] An array of slideshow transitions to play slideshow 
-              $TransitionsOrder: 1
-            }
-          }
-
-          //let jssor_slider2
-          //setTimeout( function() { jssor_slider2 = new $JssorSlider$('avatar_box1', options_ava) }, 1)
-
-          initSlider('avatar_box1', options_ava)
+          initSlider('avatar_box1', this.avatarSliderOptions)
           .then((result) => {
             ScaleSlider(result, 'avatar_box1', 260) // scale slider on document load
             $(window).on("resize orientationchange", { slider: result, sliderConteinerID: 'avatar_box1', sliderInitialWidth: 260 }, ScaleSlider ) // scale slider on window size change
           })
-          
-          /*
-          //responsive code begin
-          function ScaleAvaSlider() {
-            let avaWidth = $(window).width() / 1200 * 260
-            if (avaWidth) {
-              jssor_slider2.$ScaleWidth(avaWidth)
-            } else {
-              window.setTimeout(ScaleAvaSlider, 30)
-            }
-            //console.log(jssor_slider2)
-          }
-          //Scale slider after document ready
-          ScaleAvaSlider()
-
-          //Scale slider while window load/resize/orientationchange.
-          $(window).bind("load", ScaleAvaSlider)
-          $(window).bind("resize", ScaleAvaSlider)
-          $(window).bind("orientationchange", ScaleAvaSlider)
-          //responsive code end
-          */
         }
+        
       }
     },
     changeHeaderHeight () {
