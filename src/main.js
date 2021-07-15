@@ -5,6 +5,7 @@ import VueAxios from 'vue-axios'
 import router from './router'
 import store from './store'
 import './quasar'
+import AdminButton from './components/admin/adminButton.vue'
 import VueHead from 'vue-head'
 // import LoadScript from 'vue-plugin-load-script'
 
@@ -13,6 +14,8 @@ Vue.config.productionTip = false
 Vue.use(VueAxios, axios)
 Vue.use(VueHead)
 // Vue.use(LoadScript)
+
+Vue.component('admBtn', AdminButton)
 
 // Vue.loadScript('./jslibs/jssor.js')
 

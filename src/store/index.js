@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import nav from './navigation'
 import globSettings from './global-settings'
+import header from './header'
 // import modules from './moduls/index.js'
 import page from './moduls/page.js'
 
@@ -15,6 +16,6 @@ export default new Vuex.Store({
   actions: {
   },
   modules: {
-    nav, globSettings, page
+    nav, globSettings, header, page
   }
 })
