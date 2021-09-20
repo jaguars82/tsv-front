@@ -18,6 +18,8 @@
         style="overflow: hidden !important; height: 300px; width: 1200px;"
       >
 
+        <!--<jssor-slider :templateOptions="dynamicHeaderTemplate" :slides="headerSlides" :sliderOptions="headerSliderOptions"></jssor-slider>-->
+
         <div
           id="hdr_slides"
           data-u="slides"
@@ -121,20 +123,34 @@
 /* eslint-disable */
 
 import axios from 'axios'
+// import jssorSlider from './small/JssorSlider.vue'
 import adminButton from './admin/adminButton.vue'
 
 export default {
+  // components: { jssorSlider, adminButton },
   components: { adminButton },
   data () {
     return {
-      loading: true,
-      // backgroundMode: '1',
-      // staticBackground: '',
-      // headerSlides: [],
-      // headerSDuration: '',
-      // headerSTransitions: ''
+      loading: false,
       staticHeight: 0,
       staticAvatarHeight: 0,
+      /*
+      dynamicHeaderTemplate: {
+        parentTegID: 'header_conteiner',
+        containerStyle: { position: 'absolute', overflow: 'hidden !important', left: '0px', top: '0px', height: '300px', width: '1200px' },
+        slideImgDirectory: 'https://test.teacher-info.net/grafika/design/header/slider_bg/',
+        text1: {
+          class: 'text-right',
+          style: { position: 'absolute', bottom: '50px', left: '-100%', width: '100%', color: 'rgb(255,255,255)', backgroundColor: 'rgba(0,0,0,.6)', fontSize: '1.5em', padding: '2px 0' },
+          spanStyle: { padding: '0 50px' }
+        },
+        text2: {
+          class: 'text-right',
+          style: { position: 'absolute', bottom: 0, left: 0, opacity: 0, width: '100%', height: '50px', color: 'rgb(255,255,255)', backgroundColor: 'rgba(0,0,0,.5)', fontSize: '1.1em' },
+          spanStyle: { padding: '0 50px' }
+        }
+      },
+      */
       admin: {
         actions: [
           {
@@ -259,7 +275,6 @@ export default {
       axios.get('http://test.teacher-info.net/vserver/server.php?queryMode=develop&query_name=init')
         .then(response => {
           // console.log(response.data)
-          this.loading = false
 
           const headerData = {
             backgroundMode: response.data.header_mode,
@@ -277,6 +292,8 @@ export default {
           }
 
           this.$store.dispatch('setHeaderParams', headerData)
+
+          this.loading = false
           
         })
     },
