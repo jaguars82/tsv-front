@@ -5,6 +5,7 @@
 <script>
 
 export default {
+  name: 'Visitka',
   data () {
     return {
       

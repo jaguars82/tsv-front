@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>Подразделы {{ razdel }}</p>
+    <p>Подразделы раздела {{ razdel }}</p>
     <subrazdel-wrapper v-for="item in currentSubrazdels" :key="item.id" :identificator="item.id" :type="item.type" :real-name="item.real_name"></subrazdel-wrapper>
   </div>
 </template>
@@ -10,13 +10,9 @@
 import SubrazdelWrapper from './SubrazdelWrapper.vue'
 
   export default {
+    name: 'SubrazdelsWrapper',
     props: ['razdel'],
     components: { SubrazdelWrapper },
-    /*data () {
-      return {
-        razdel: null
-      }
-    },*/
     computed: {
       currentSubrazdels () {
         const subrazdels = this.$store.getters.currentSubrazdels

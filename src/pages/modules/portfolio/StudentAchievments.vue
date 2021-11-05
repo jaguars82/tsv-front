@@ -5,6 +5,7 @@
 <script>
 
 export default {
+  name: 'StudentAchievments',
   data () {
     return {
       

@@ -5,6 +5,7 @@
 <script>
 
 export default {
+  name: 'Qualification',
   data () {
     return {
       
