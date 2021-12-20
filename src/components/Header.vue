@@ -28,7 +28,7 @@
         
           <div v-for="(slide, index) in headerSlides" :key="index">
             
-            <img data-u="image" :src="`https://test.teacher-info.net/grafika/design/header/slider_bg/${slide.filename}`" />
+            <img data-u="image" :src="`https://testdrive.teacher-site.ru/grafika/design/header/slider_bg/${slide.filename}`" />
             
             <div
               v-if="slide.main_txt"
@@ -66,7 +66,7 @@
           <img
             v-if="avatarMode === '1'"
             id="hdr_avatar"
-            src="https://test.teacher-info.net/grafika/custom_page_elements/header_foto.jpg"
+            src="https://testdrive.teacher-site.ru/grafika/custom_page_elements/header_foto.jpg"
             :style="'height:' + staticAvatarHeight + 'px; margin: 0; padding: 0;'"
           >
 
@@ -79,7 +79,7 @@
 
                 <div v-for="(avaSlide, index) in avatarSlides" :key="index">
 
-                  <img data-u="image" :src="`https://test.teacher-info.net/grafika/design/header/slider_ava/${avaSlide.filename}`" />
+                  <img data-u="image" :src="`https://testdrive.teacher-site.ru/grafika/design/header/slider_ava/${avaSlide.filename}`" />
 
                   <div
                     v-if="avaSlide.main_txt"
@@ -138,7 +138,7 @@ export default {
       dynamicHeaderTemplate: {
         parentTegID: 'header_conteiner',
         containerStyle: { position: 'absolute', overflow: 'hidden !important', left: '0px', top: '0px', height: '300px', width: '1200px' },
-        slideImgDirectory: 'https://test.teacher-info.net/grafika/design/header/slider_bg/',
+        slideImgDirectory: 'https://testdrive.teacher-site.ru/grafika/design/header/slider_bg/',
         text1: {
           class: 'text-right',
           style: { position: 'absolute', bottom: '50px', left: '-100%', width: '100%', color: 'rgb(255,255,255)', backgroundColor: 'rgba(0,0,0,.6)', fontSize: '1.5em', padding: '2px 0' },
@@ -272,7 +272,7 @@ export default {
   methods: {
     getData () {
       this.loading = true
-      axios.get('http://test.teacher-info.net/vserver/server.php?queryMode=develop&query_name=init')
+      axios.get('http://testdrive.teacher-site.ru/vserver/server.php?queryMode=develop&query_name=init')
         .then(response => {
           // console.log(response.data)
 
